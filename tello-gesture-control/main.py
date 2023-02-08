@@ -83,7 +83,6 @@ def main():
     cap = tello.get_frame_read()
     vid = cv.VideoCapture(0)
     def videoRecorder():
-        # 创建一个VideoWrite对象，存储画面至./video.avi
         height, width, _ = cap.frame.shape
         video = cv.VideoWriter('video.avi', cv.VideoWriter_fourcc(*'XVID'), 30, (width, height))
 
@@ -117,19 +116,7 @@ def main():
         try:
             battery_status = tello.get_battery()[:-2]
         except:
-            battery_status = -1
-    
-    # def videoRecorder():
-        # # 创建一个VideoWrite对象，存储画面至./video.avi
-        # height, width, _ = cap.frame.shape
-        # video = cv.VideoWriter('video.avi', cv.VideoWriter_fourcc(*'XVID'), 30, (width, height))
-
-        # while keepRecording:
-            # video.write(frame_read.frame)
-            # time.sleep(1 / 30)
-
-        # video.release()
-    
+            battery_status = -1    
     
     # FPS Measurement
     cv_fps_calc = CvFpsCalc(buffer_len=10)
